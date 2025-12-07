@@ -14,11 +14,11 @@ body {
   line-height: 1.7;
   color: #222;
 
-  /* はっきり分かる薄グレー背景（PCでも一目で違いが分かる） */
-  background-color: #f2f4f8;
+  /* うすいグレーで全体の土台色 */
+  background-color: #edf0f7;
 }
 
-/* コンテンツ幅統一 */
+/* コンテンツ幅 */
 main,
 .company-section,
 .section-block,
@@ -28,7 +28,7 @@ main,
   padding: 0 18px;
 }
 
-/* 見出し */
+/* 見出し・段落 */
 h1, h2, h3 {
   margin: 0 0 0.6em;
   font-weight: 600;
@@ -40,14 +40,15 @@ p {
 }
 
 /* ==========================
-   ヘッダー（ガラス風）
+   ヘッダー
    ========================== */
+
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid #e3e5ec;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #e0e3ec;
   backdrop-filter: blur(8px);
 }
 
@@ -117,26 +118,16 @@ p {
 }
 
 /* ==========================
-   ヒーロー（上の大きい帯）
+   ヒーロー
    ========================== */
 
-/* ヒーロー全体は「背景グレーの上に乗った白いカード」風にする */
-.hero-wrapper {
-  max-width: 1100px;
-  margin: 16px auto 0;
-  padding: 0 18px;
-}
-
 .hero {
-  padding: 28px 26px 26px;
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
-  border: 1px solid #e1e4f0;
+  margin-top: 8px;
+  padding: 70px 18px 64px;
+  /* はっきり分かるグリーン〜ブルーグラデ */
+  background: linear-gradient(120deg, #e8f5e9, #e3f2fd);
 }
 
-/* 既存HTMLでは <section class="hero fade"> なので
-   上の .hero-wrapper がなくても崩れないように */
 .hero > * {
   max-width: 900px;
   margin-left: auto;
@@ -171,8 +162,8 @@ p {
 
 @media (max-width: 640px) {
   .hero {
-    padding: 20px 18px 22px;
-    border-radius: 14px;
+    padding-top: 58px;
+    padding-bottom: 44px;
   }
   .hero-title {
     font-size: 24px;
@@ -180,51 +171,39 @@ p {
 }
 
 /* ==========================
-   セクション背景（カードっぽく）
+   セクション背景（色分けで見やすく）
    ========================== */
 
-/* 全体はグレー背景なので、セクションごとに白カードを載せるイメージ */
+/* 会社概要セクションは白ベース */
+.company-section {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  background-color: #ffffff;
+}
 
-.company-section,
-.section-block,
-.page-header {
+/* 共通セクション */
+.section-block {
   padding-top: 32px;
   padding-bottom: 32px;
 }
 
-/* 共通の白カード */
-.company-section,
-.section-block,
+/* section-block を交互に色分け（淡いブルー / 淡いグリーン） */
+.section-block:nth-of-type(odd) {
+  background-color: #f4f8ff;   /* うすいブルー */
+}
+
+.section-block:nth-of-type(even) {
+  background-color: #f4fbf4;   /* うすいグリーン */
+}
+
+/* 下層のページヘッダーは白ベースに */
 .page-header {
-  background-color: transparent; /* まず透明に */
-}
-
-/* 中身を白い箱にするための共通ラッパー */
-.section-inner {
+  padding: 56px 18px 30px;
   background-color: #ffffff;
-  border-radius: 14px;
-  padding: 22px 20px 20px;
-  box-shadow: 0 10px 26px rgba(15, 20, 40, 0.04);
-  border: 1px solid #e1e4f0;
+  border-bottom: 1px solid #e3e5ec;
 }
 
-/* 既存HTMLに .section-inner がないので、
-   汎用的に section 内の直下に白いカード風を適用 */
-.company-section > h2,
-.company-section > p,
-.company-section > table,
-.section-block > h2,
-.section-block > p,
-.section-block > .card-grid,
-.section-block > .card,
-.page-header > h1,
-.page-header > p {
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* タイトル下のライン */
+/* セクションタイトルの下にライン */
 .company-section h2,
 .section-block h2,
 .page-header h1 {
@@ -297,7 +276,7 @@ p {
   padding: 18px 20px 16px;
   margin-bottom: 18px;
   border: 1px solid #e3e5ee;
-  box-shadow: 0 12px 24px rgba(15, 20, 40, 0.04);
+  box-shadow: 0 10px 22px rgba(15, 20, 40, 0.04);
   transition: transform 0.18s ease, box-shadow 0.18s ease,
     border-color 0.18s ease;
 }
@@ -317,13 +296,14 @@ p {
   font-size: 13px;
 }
 
+/* ホバーで少しだけ浮かせる */
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
+  box-shadow: 0 16px 32px rgba(15, 20, 40, 0.08);
   border-color: #d0d6ea;
 }
 
-/* 3→2→1列 */
+/* グリッド（3→2→1列） */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -401,8 +381,8 @@ p {
   text-align: center;
   font-size: 12px;
   color: #777;
-  background-color: #f2f4f8;
-  border-top: 1px solid #e1e3ec;
+  background-color: #e6e9f2;
+  border-top: 1px solid #d7dbe8;
 }
 
 /* ==========================
