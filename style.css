@@ -125,7 +125,7 @@ p {
 .hero {
   margin-top: 8px;
   padding: 70px 18px 64px;
-  background: linear-gradient(120deg, #93c5fd, #6ee7b7); /* 青〜緑、1段濃く */
+  background: linear-gradient(120deg, #dbeafe, #d1fae5);
 }
 
 /* 中身は白カードに乗せて読みやすく */
