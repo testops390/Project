@@ -1,11 +1,9 @@
-// -----------------------------
 // ページのフェードイン
 // -----------------------------
 document.addEventListener("DOMContentLoaded", () => {
   document.body.style.opacity = "1";
 });
 
-// -----------------------------
 // スクロールで要素をふわっと表示
 // -----------------------------
 const observer = new IntersectionObserver(
@@ -21,7 +19,6 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
 
-// -----------------------------
 // リンククリック時の軽いアニメ風
 // -----------------------------
 document.querySelectorAll("a").forEach((link) => {
