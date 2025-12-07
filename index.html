@@ -3,9 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Test Page</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 40px;
+      background: #f8f8f8;
+    }
+
+    .fade {
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+
+    .show {
+      opacity: 1;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+  </style>
 </head>
 <body>
-  <h1>GitHub Pages テスト</h1>
-  <p>このページが表示されれば成功です。</p>
+  <h1 id="title" class="fade">GitHub Pages テスト</h1>
+  <p id="message" class="fade">このページが表示されれば成功です。</p>
+
+  <script>
+    // タイトルをフェードイン
+    const title = document.getElementById("title");
+    const message = document.getElementById("message");
+
+    window.addEventListener("load", () => {
+      // タイトルをフェードイン
+      setTimeout(() => {
+        title.classList.add("show");
+      }, 200); 
+
+      // 2秒後にメッセージをフェードイン
+      setTimeout(() => {
+        message.classList.add("show");
+      }, 2000);
+    });
+  </script>
 </body>
 </html>
