@@ -13,10 +13,12 @@ body {
     "ヒラギノ角ゴ ProN", "メイリオ", sans-serif;
   line-height: 1.7;
   color: #222;
-  background: linear-gradient(180deg, #f5f7fb 0, #ffffff 140px); /* 上だけほんのり色 */
+
+  /* PCでも見える“ふんわりホワイトグレー”背景 */
+  background: linear-gradient(180deg, #f2f4f8 0, #ffffff 800px);
 }
 
-/* コンテンツ幅 */
+/* コンテンツ幅統一 */
 main,
 .company-section,
 .section-block,
@@ -26,7 +28,7 @@ main,
   padding: 0 18px;
 }
 
-/* 見出し・段落 */
+/* 見出し */
 h1, h2, h3 {
   margin: 0 0 0.6em;
   font-weight: 600;
@@ -37,24 +39,16 @@ p {
   margin: 0 0 1em;
 }
 
-/* 余白のリズム */
-.section-block,
-.company-section {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
 /* ==========================
-   ヘッダー / ナビ
+   ヘッダー（ガラス風）
    ========================== */
-
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
-  background-color: rgba(255, 255, 255, 0.96);
+  background-color: rgba(255, 255, 255, 0.92);
   border-bottom: 1px solid #e3e5ec;
-  backdrop-filter: blur(8px); /* ちょっとガラスっぽく */
+  backdrop-filter: blur(8px);
 }
 
 .header-inner {
@@ -89,7 +83,7 @@ p {
   transition: color 0.2s ease;
 }
 
-/* 下に細いラインのホバー */
+/* 下線ホバー */
 .global-nav a::after {
   content: "";
   position: absolute;
@@ -137,7 +131,7 @@ p {
   margin-right: auto;
 }
 
-/* ヒーロー内にカード感を出す */
+/* カード風に見えるヒーロー帯 */
 .hero-inner {
   background: #ffffff;
   border-radius: 16px;
@@ -146,6 +140,7 @@ p {
   border: 1px solid #e7ebf3;
 }
 
+/* 既存対応（index.htmlがhero-innerを使わない場合） */
 .hero-kicker {
   font-size: 12px;
   letter-spacing: 0.18em;
@@ -172,15 +167,6 @@ p {
   max-width: 640px;
 }
 
-/* 既存HTML対応：hero直下をそのままカード風にする */
-.hero > .hero-kicker,
-.hero > .hero-title,
-.hero > .hero-subtitle,
-.hero > .hero-text {
-  max-width: 720px;
-}
-
-/* PCでは少し左寄せで見せる */
 @media (min-width: 840px) {
   .hero > .hero-kicker,
   .hero > .hero-title,
@@ -201,7 +187,7 @@ p {
 }
 
 /* ==========================
-   セクション背景
+   セクションごとの背景（薄い色でメリハリ）
    ========================== */
 
 .company-section,
@@ -213,7 +199,7 @@ p {
   background-color: #f7f8fc;
 }
 
-/* セクションタイトルの下線 */
+/* セクションタイトルデザイン */
 .company-section h2,
 .section-block h2,
 .page-header h1 {
@@ -234,7 +220,7 @@ p {
 }
 
 /* ==========================
-   会社概要（表）
+   会社概要（テーブル）
    ========================== */
 
 .company-section h2 {
@@ -278,7 +264,7 @@ p {
 }
 
 /* ==========================
-   カード
+   カードデザイン
    ========================== */
 
 .card {
@@ -290,6 +276,12 @@ p {
   box-shadow: 0 12px 24px rgba(15, 20, 40, 0.04);
   transition: transform 0.18s ease, box-shadow 0.18s ease,
     border-color 0.18s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
+  border-color: #d0d6ea;
 }
 
 .card h3 {
@@ -307,14 +299,7 @@ p {
   font-size: 13px;
 }
 
-/* ホバーで少しだけ浮かせる */
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
-  border-color: #d0d6ea;
-}
-
-/* グリッド（3→2→1列） */
+/* グリッド（3 → 2 → 1） */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -334,7 +319,7 @@ p {
 }
 
 /* ==========================
-   ページヘッダー（下層ページ）
+   下層ページヘッダー
    ========================== */
 
 .page-header {
@@ -354,21 +339,7 @@ p {
 }
 
 /* ==========================
-   セクション共通
-   ========================== */
-
-.section-block h2 {
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.section-block p {
-  font-size: 14px;
-  max-width: 760px;
-}
-
-/* ==========================
-   ボタン風リンク
+   ボタンリンク
    ========================== */
 
 .btn-link {
@@ -383,8 +354,7 @@ p {
   font-size: 13px;
   border: none;
   box-shadow: 0 8px 18px rgba(46, 125, 50, 0.25);
-  transition: transform 0.15s ease, box-shadow 0.15s ease,
-    background-color 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn-link::after {
