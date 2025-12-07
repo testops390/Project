@@ -9,33 +9,40 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "ヒラギノ角ゴ ProN",
-    "メイリオ", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+    "ヒラギノ角ゴ ProN", "メイリオ", sans-serif;
   line-height: 1.7;
   color: #222;
-  background-color: #ffffff; /* 完全白ベース */
+  background: linear-gradient(180deg, #f5f7fb 0, #ffffff 140px); /* 上だけほんのり色 */
 }
 
-/* コンテンツ幅の統一 */
+/* コンテンツ幅 */
 main,
 .company-section,
 .section-block,
 .page-header {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0 16px;
+  padding: 0 18px;
 }
 
-/* 見出し */
+/* 見出し・段落 */
 h1, h2, h3 {
   margin: 0 0 0.6em;
   font-weight: 600;
+  letter-spacing: 0.02em;
 }
 
 p {
   margin: 0 0 1em;
 }
 
+/* 余白のリズム */
+.section-block,
+.company-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
 
 /* ==========================
    ヘッダー / ナビ
@@ -44,64 +51,84 @@ p {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 10;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e6e6e6;
+  z-index: 20;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #e3e5ec;
+  backdrop-filter: blur(8px); /* ちょっとガラスっぽく */
 }
 
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 10px 16px;
+  padding: 10px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .logo {
-  font-size: 19px;
+  font-size: 18px;
   font-weight: 700;
   text-decoration: none;
-  color: #2e7d32; /* 主役カラー：農業系の緑 */
+  color: #2e7d32;
+  letter-spacing: 0.06em;
+}
+
+.global-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
 .global-nav a {
-  margin-left: 20px;
+  position: relative;
   text-decoration: none;
-  font-size: 14px;
-  color: #333;
-  transition: 0.2s;
+  font-size: 13px;
+  color: #444;
+  padding-bottom: 3px;
+  transition: color 0.2s ease;
+}
+
+/* 下に細いラインのホバー */
+.global-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: #2e7d32;
+  border-radius: 999px;
+  transition: width 0.2s ease;
 }
 
 .global-nav a:hover {
   color: #2e7d32;
 }
 
-@media (max-width: 640px) {
+.global-nav a:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
   .header-inner {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
+    gap: 6px;
   }
   .global-nav {
-    display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-  }
-  .global-nav a {
-    margin-left: 0;
+    gap: 10px 14px;
   }
 }
 
-
 /* ==========================
-   ヒーローセクション（白背景向けに再設計）
+   ヒーローセクション
    ========================== */
 
 .hero {
-  padding: 80px 16px 70px;
-  background-color: #fafafa; /* 薄いグレーで柔らかく */
-  border-bottom: 1px solid #eee;
+  margin-top: 6px;
+  padding: 70px 18px 64px;
 }
 
 .hero > * {
@@ -110,60 +137,101 @@ p {
   margin-right: auto;
 }
 
+/* ヒーロー内にカード感を出す */
+.hero-inner {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 26px 26px;
+  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
+  border: 1px solid #e7ebf3;
+}
+
 .hero-kicker {
-  font-size: 13px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.18em;
   color: #2e7d32;
+  text-transform: uppercase;
 }
 
 .hero-title {
-  font-size: 32px;
-  line-height: 1.4;
-  margin-top: 8px;
-  margin-bottom: 4px;
+  font-size: 30px;
+  line-height: 1.5;
+  margin-top: 10px;
+  margin-bottom: 6px;
 }
 
 .hero-subtitle {
   font-size: 13px;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.14em;
   color: #2e7d32;
   margin-bottom: 16px;
 }
 
 .hero-text {
-  font-size: 15px;
-  max-width: 700px;
+  font-size: 14px;
+  max-width: 640px;
+}
+
+/* 既存HTML対応：hero直下をそのままカード風にする */
+.hero > .hero-kicker,
+.hero > .hero-title,
+.hero > .hero-subtitle,
+.hero > .hero-text {
+  max-width: 720px;
+}
+
+/* PCでは少し左寄せで見せる */
+@media (min-width: 840px) {
+  .hero > .hero-kicker,
+  .hero > .hero-title,
+  .hero > .hero-subtitle,
+  .hero > .hero-text {
+    margin-left: 60px;
+  }
 }
 
 @media (max-width: 640px) {
   .hero {
-    padding-top: 56px;
-    padding-bottom: 48px;
+    padding-top: 58px;
+    padding-bottom: 44px;
   }
   .hero-title {
     font-size: 24px;
   }
 }
 
-
 /* ==========================
-   セクション背景（白×薄グレー交互で企業感UP）
+   セクション背景
    ========================== */
 
 .company-section,
 .section-block:nth-of-type(odd) {
-  background-color: #ffffff; /* 真っ白 */
+  background-color: #ffffff;
 }
 
 .section-block:nth-of-type(even) {
-  background-color: #fafafa; /* 優しい薄グレー */
+  background-color: #f7f8fc;
 }
 
-.company-section {
-  padding-bottom: 40px;
-  padding-top: 24px;
+/* セクションタイトルの下線 */
+.company-section h2,
+.section-block h2,
+.page-header h1 {
+  position: relative;
+  padding-bottom: 6px;
 }
 
+.company-section h2::after,
+.section-block h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 44px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2e7d32, #7cb342);
+}
 
 /* ==========================
    会社概要（表）
@@ -171,34 +239,37 @@ p {
 
 .company-section h2 {
   font-size: 22px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .company-section > p {
-  font-size: 15px;
-  margin-bottom: 24px;
+  font-size: 14px;
+  margin-bottom: 22px;
+  max-width: 720px;
 }
 
 .company-table {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
-  border-radius: 6px;
+  border-radius: 10px;
   overflow: hidden;
-  border: 1px solid #e6e6e6;
+  border: 1px solid #e2e4ec;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.03);
 }
 
 .company-table th,
 .company-table td {
-  padding: 12px 16px;
-  font-size: 14px;
-  border-bottom: 1px solid #efefef;
+  padding: 12px 18px;
+  font-size: 13px;
+  border-bottom: 1px solid #eef0f5;
 }
 
 .company-table th {
-  width: 28%;
-  background-color: #f7f7f7;
+  width: 26%;
+  background-color: #f8f9fd;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .company-table tr:last-child th,
@@ -206,42 +277,48 @@ p {
   border-bottom: none;
 }
 
-
 /* ==========================
    カード
    ========================== */
 
 .card {
   background-color: #ffffff;
-  border-radius: 10px;
-  padding: 16px 18px;
-  margin-bottom: 20px;
-  border: 1px solid #ececec;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border-radius: 14px;
+  padding: 18px 20px 16px;
+  margin-bottom: 18px;
+  border: 1px solid #e3e5ee;
+  box-shadow: 0 12px 24px rgba(15, 20, 40, 0.04);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    border-color 0.18s ease;
 }
 
 .card h3 {
-  font-size: 17px;
-  margin-bottom: 8px;
+  font-size: 16px;
+  margin-bottom: 6px;
 }
 
 .card ul {
   margin: 0 0 8px;
   padding-left: 18px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .card p {
-  font-size: 14px;
+  font-size: 13px;
 }
 
+/* ホバーで少しだけ浮かせる */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
+  border-color: #d0d6ea;
+}
 
-/* グリッド（3列→2列→1列） */
-
+/* グリッド（3→2→1列） */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  gap: 18px;
 }
 
 @media (max-width: 900px) {
@@ -256,51 +333,75 @@ p {
   }
 }
 
-
 /* ==========================
-   ページヘッダー
+   ページヘッダー（下層ページ）
    ========================== */
 
 .page-header {
-  padding: 56px 16px 30px;
+  padding: 64px 18px 30px;
   background-color: #ffffff;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #eceef5;
 }
 
 .page-header h1 {
-  font-size: 26px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 .page-header p {
   font-size: 14px;
-  max-width: 700px;
+  max-width: 720px;
 }
 
+/* ==========================
+   セクション共通
+   ========================== */
+
+.section-block h2 {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.section-block p {
+  font-size: 14px;
+  max-width: 760px;
+}
 
 /* ==========================
    ボタン風リンク
    ========================== */
 
 .btn-link {
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  border-radius: 999px;
   background-color: #2e7d32;
   color: #ffffff;
   text-decoration: none;
+  font-size: 13px;
+  border: none;
+  box-shadow: 0 8px 18px rgba(46, 125, 50, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.btn-link::after {
+  content: "›";
   font-size: 14px;
-  transition: 0.2s;
 }
 
 .btn-link:hover {
   background-color: #256628;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(46, 125, 50, 0.28);
 }
 
 .contact-note {
-  font-size: 13px;
-  color: #555;
+  font-size: 12px;
+  color: #666;
 }
-
 
 /* ==========================
    フッター
@@ -308,14 +409,13 @@ p {
 
 .site-footer {
   margin-top: 40px;
-  padding: 20px 16px 24px;
+  padding: 20px 18px 26px;
   text-align: center;
   font-size: 12px;
   color: #777;
-  background-color: #fafafa;
-  border-top: 1px solid #e6e6e6;
+  background-color: #f7f8fc;
+  border-top: 1px solid #e1e3ec;
 }
-
 
 /* ==========================
    フェードイン
