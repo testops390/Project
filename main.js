@@ -1,11 +1,13 @@
-// ページのフェードイン
-// -----------------------------
+// ======================================
+// ページフェードイン
+// ======================================
 document.addEventListener("DOMContentLoaded", () => {
   document.body.style.opacity = "1";
 });
 
-// スクロールで要素をふわっと表示
-// -----------------------------
+// ======================================
+// スクロールで要素をフェードイン
+// ======================================
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -14,18 +16,35 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.1 }
 );
 
 document.querySelectorAll(".fade").forEach((el) => observer.observe(el));
 
-// リンククリック時の軽いアニメ風
-// -----------------------------
+// ======================================
+// ページ遷移時フェードアウト
+// ======================================
 document.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", (e) => {
-    // 外部リンクや新規タブは除外
+
+    // ① 新しいタブ(target="_blank") → フェードアウトしない
     if (link.target === "_blank") return;
 
+    const href = link.getAttribute("href");
+    if (!href) return;
+
+    // ② 同じページ内の #anchor → フェードアウトしない
+    if (href.startsWith("#")) return;
+
+    // ③ 同じページの id 付きリンク（index.html#company など）も除外
+    const currentPage = location.pathname.split("/").pop() || "index.html";
+    const cleanedHref = href.split("#")[0];
+
+    if (cleanedHref === "" || cleanedHref === currentPage) {
+      return; // ← フェードアウトしない
+    }
+
+    // ④ ここまで来たら「別ページへの移動」と判断 → フェードアウト実行
     document.body.style.opacity = "0";
   });
 });
