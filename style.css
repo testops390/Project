@@ -1,4 +1,7 @@
-/* ===== 全体共通 ===== */
+/* ==========================
+   全体基本設定
+   ========================== */
+
 *,
 *::before,
 *::after {
@@ -12,13 +15,9 @@ body {
   line-height: 1.7;
   color: #222;
   background-color: #f6f7fb;
-
-  /* ページフェードイン */
-  opacity: 0;
-  transition: opacity 0.8s ease;
 }
 
-/* ページ全体の幅と余白 */
+/* 幅の統一 */
 main,
 .company-section,
 .page-header,
@@ -29,7 +28,7 @@ main,
   padding: 0 16px;
 }
 
-/* 見出しの共通 */
+/* 見出し */
 h1, h2, h3 {
   margin: 0 0 0.6em;
   font-weight: 600;
@@ -39,7 +38,11 @@ p {
   margin: 0 0 1em;
 }
 
-/* ===== ヘッダー＆ナビ ===== */
+
+/* ==========================
+   ヘッダー / ナビ
+   ========================== */
+
 .site-header {
   position: sticky;
   top: 0;
@@ -91,7 +94,11 @@ p {
   }
 }
 
-/* ===== ヒーロー ===== */
+
+/* ==========================
+   ヒーローセクション
+   ========================== */
+
 .hero {
   padding: 80px 16px 70px;
   background: linear-gradient(120deg, #e8f5ff, #e5f7ef);
@@ -139,7 +146,11 @@ p {
   }
 }
 
-/* ===== 会社概要 ===== */
+
+/* ==========================
+   会社概要セクション
+   ========================== */
+
 .company-section {
   padding-bottom: 60px;
 }
@@ -182,7 +193,11 @@ p {
   border-bottom: none;
 }
 
-/* ===== 求人・商品 ===== */
+
+/* ==========================
+   求人情報 / 取扱商品
+   ========================== */
+
 .job-section,
 .product-section {
   padding: 24px 16px 16px;
@@ -210,7 +225,11 @@ p {
   font-size: 14px;
 }
 
-/* ===== フッター ===== */
+
+/* ==========================
+   フッター
+   ========================== */
+
 .site-footer {
   margin-top: 40px;
   padding: 20px 16px 24px;
@@ -219,7 +238,11 @@ p {
   color: #777;
 }
 
-/* ===== スクロールフェード ===== */
+
+/* ==========================
+   スクロール時フェードイン
+   ========================== */
+
 .fade {
   opacity: 0;
   transform: translateY(20px);
@@ -229,4 +252,21 @@ p {
 .fade.show {
   opacity: 1;
   transform: translateY(0);
+}
+
+
+/* ==========================
+   ページ遷移フェード（戻る対応）
+   ========================== */
+
+/* 最初の表示（main.js で fade-in が追加される） */
+body.fade-in {
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
+/* リンククリック時のフェードアウト */
+body.fade-out {
+  opacity: 0;
+  transition: opacity 0.7s ease;
 }
