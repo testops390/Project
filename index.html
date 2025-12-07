@@ -2,12 +2,26 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Test Page</title>
+  <title>株式会社テスト</title>
   <style>
     body {
+      margin: 0;
       font-family: system-ui, sans-serif;
-      padding: 40px;
-      background: #f8f8f8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;   /* 縦方向まんなか */
+      align-items: center;       /* 横方向まんなか */
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 90%;
+      padding: 40px 24px;
+      text-align: center;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
     .fade {
@@ -21,32 +35,57 @@
 
     h1 {
       font-size: 32px;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin: 24px 0 8px;
     }
 
     p {
-      font-size: 20px;
+      margin: 0;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .sections {
+      margin-top: 8px;
+      text-align: left; /* セクションは左寄せにしたい場合 */
     }
   </style>
 </head>
 <body>
-  <h1 id="title" class="fade">GitHub Pages テスト</h1>
-  <p id="message" class="fade">このページが表示されれば成功です。</p>
+  <div class="container">
+    <!-- ページ中央のタイトル -->
+    <h1 id="title" class="fade">株式会社テスト</h1>
+
+    <!-- 下に並ぶ 会社概要 / 求人情報 / 取扱商品 -->
+    <div id="sections" class="sections fade">
+      <h2>会社概要</h2>
+      <p>ここに会社概要を記載します。</p>
+
+      <h2>求人情報</h2>
+      <p>ここに求人情報を記載します。</p>
+
+      <h2>取扱商品</h2>
+      <p>ここに取扱商品の説明を記載します。</p>
+    </div>
+  </div>
 
   <script>
-    // タイトルをフェードイン
     const title = document.getElementById("title");
-    const message = document.getElementById("message");
+    const sections = document.getElementById("sections");
 
     window.addEventListener("load", () => {
-      // タイトルをフェードイン
+      // まずタイトルをフェードイン
       setTimeout(() => {
         title.classList.add("show");
-      }, 200); 
+      }, 200);
 
-      // 2秒後にメッセージをフェードイン
+      // 2秒後に下の内容をフェードイン
       setTimeout(() => {
-        message.classList.add("show");
+        sections.classList.add("show");
       }, 2000);
     });
   </script>
