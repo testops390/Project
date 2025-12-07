@@ -2,383 +2,61 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>株式会社テスト｜農業事業</title>
+  <title>株式会社テスト 農業事業</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    :root {
-      --main-blue: #1c6fd9;
-      --main-green: #3ba56a;
-      --text-main: #222;
-      --text-sub: #555;
-      --bg-light: #f5f7fa;
-      --max-width: 1040px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text-main);
-      background: #ffffff;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ヘッダー */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: #fff;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .header-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 700;
-      font-size: 18px;
-    }
-
-    .logo-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #ffffff 0, #ffffff 20%, var(--main-blue) 21%, var(--main-green) 80%);
-    }
-
-    .nav {
-      display: flex;
-      gap: 20px;
-      font-size: 14px;
-    }
-
-    .nav a:hover {
-      color: var(--main-blue);
-    }
-
-    /* ヒーロー */
-    .hero {
-      background: linear-gradient(135deg, #e5f3ff, #e7f7ec);
-      padding: 52px 20px 40px;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .hero-inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-
-    .hero-kicker {
-      font-size: 13px;
-      letter-spacing: .1em;
-      color: var(--main-blue);
-      margin-bottom: 14px;
-    }
-
-    .hero-title {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 700;
-      margin: 0 0 6px;
-      line-height: 1.3;
-    }
-
-    .hero-sub {
-      font-size: 18px;
-      letter-spacing: .16em;
-      color: var(--main-blue);
-      font-weight: 600;
-      margin: 0 0 18px;
-    }
-
-    .hero-text {
-      max-width: 640px;
-      font-size: 15px;
-      color: var(--text-sub);
-      line-height: 1.8;
-    }
-
-    /* 下のセクション共通 */
-    main {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 32px 20px 48px;
-    }
-
-    section {
-      margin-bottom: 40px;
-    }
-
-    .section-label {
-      font-size: 12px;
-      letter-spacing: .25em;
-      color: var(--main-blue);
-      margin-bottom: 8px;
-    }
-
-    .section-title {
-      font-size: 24px;
-      margin: 0 0 16px;
-    }
-
-    .section-text {
-      font-size: 14px;
-      color: var(--text-sub);
-      line-height: 1.9;
-      margin: 0 0 16px;
-    }
-
-    .card-list {
-      display: grid;
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--bg-light);
-      border-radius: 10px;
-      padding: 16px 18px;
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 16px;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--text-sub);
-      line-height: 1.8;
-    }
-
-    .company-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-
-    .company-table th,
-    .company-table td {
-      padding: 8px 10px;
-      border-bottom: 1px solid #e5e7eb;
-      text-align: left;
-    }
-
-    .company-table th {
-      width: 120px;
-      background: #f9fafb;
-      font-weight: 600;
-      white-space: nowrap;
-    }
-
-    /* フェードイン */
-    .fade {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* レスポンシブ */
-    @media (min-width: 720px) {
-      .card-list {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .header-inner {
-        padding-inline: 12px;
-      }
-      .nav {
-        display: none; /* とりあえずスマホではナビ非表示（シンプルに） */
-      }
-      .hero {
-        padding-top: 32px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css"><!-- あればそのまま -->
 </head>
 <body>
-  <!-- ヘッダー -->
+  <!-- ヘッダー：ロゴをクリックでホームに戻れる -->
   <header class="site-header">
     <div class="header-inner">
-      <div class="logo">
-        <div class="logo-mark"></div>
-        <span>株式会社テスト 農業事業</span>
-      </div>
-      <nav class="nav">
-        <a href="#about">会社概要</a>
-        <a href="#recruit">求人情報</a>
-        <a href="#products">取扱商品</a>
+      <a href="index.html" class="logo">株式会社テスト 農業事業</a>
+      <nav class="global-nav">
+        <a href="index.html">ホーム</a>
+        <a href="#company">会社概要</a>
+        <a href="recruit.html">求人情報</a>
+        <a href="products.html">取扱商品</a>
       </nav>
     </div>
   </header>
 
-  <!-- ヒーロー -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-kicker">AGRICULTURE × QUALITY</div>
-      <h1 id="heroTitle" class="hero-title fade">
+  <!-- メインビジュアル（いまのトップの文章） -->
+  <main>
+    <section class="hero">
+      <p class="hero-kicker">AGRICULTURE × QUALITY</p>
+      <h1 class="hero-title">
         良質な米と畜産で<br>
         地域の食とくらしを支える
       </h1>
-      <p class="hero-sub fade" id="heroSub">
-        CREATING GOOD FARMING QUALITY
-      </p>
-      <p class="hero-text fade" id="heroText">
+      <p class="hero-subtitle">CREATING GOOD FARMING QUALITY</p>
+      <p class="hero-text">
         株式会社テストは、水田で育てるお米づくりと、地域に根ざした畜産事業を通じて、
         まいにちの食卓に「安全でおいしいもの」を届けることを目指しています。
         土づくりから飼料、出荷まで一つひとつの工程に丁寧に向き合い、
         人と環境にやさしい農業に取り組んでいます。
       </p>
-    </div>
-  </section>
+    </section>
 
-  <!-- メインコンテンツ -->
-  <main>
-    <!-- 会社概要 -->
-    <section id="about" class="fade">
-      <div class="section-label">COMPANY</div>
-      <h2 class="section-title">会社概要</h2>
-      <p class="section-text">
+    <!-- 会社概要：ここに #company を付けておく -->
+    <section id="company" class="company-section">
+      <h2>会社概要</h2>
+      <p>
         農業が持つ力を次の世代につなぐために、米づくりと畜産を柱とした事業を展開しています。
         地域の農地や資源を活かしながら、安定した品質と継続的な供給体制づくりに取り組んでいます。
       </p>
+
       <table class="company-table">
-        <tr>
-          <th>会社名</th>
-          <td>株式会社テスト</td>
-        </tr>
-        <tr>
-          <th>所在地</th>
-          <td>〇〇県〇〇市〇〇町 1-2-3</td>
-        </tr>
-        <tr>
-          <th>事業内容</th>
-          <td>水稲栽培、肉用牛の肥育・飼養管理、農産物の加工・販売 など</td>
-        </tr>
-        <tr>
-          <th>設立</th>
-          <td>20XX年X月</td>
-        </tr>
-        <tr>
-          <th>従業員数</th>
-          <td>XX名（パート・アルバイト含む）</td>
-        </tr>
+        <tr><th>会社名</th><td>株式会社テスト</td></tr>
+        <tr><th>所在地</th><td>〇〇県〇〇市〇〇町 1-2-3</td></tr>
+        <tr><th>事業内容</th><td>水稲栽培、畜産業、農産物加工・販売 ほか</td></tr>
+        <tr><th>設立</th><td>20XX年X月X日</td></tr>
+        <tr><th>代表者</th><td>代表取締役　〇〇 〇〇</td></tr>
       </table>
-    </section>
-
-    <!-- 求人情報 -->
-    <section id="recruit" class="fade">
-      <div class="section-label">RECRUIT</div>
-      <h2 class="section-title">求人情報</h2>
-      <p class="section-text">
-        「からだを動かすのが好き」「生きものの世話に興味がある」「将来、農業で独立したい」。
-        そんな思いを持つ方と一緒に、農業の現場を支えていきたいと考えています。
-        未経験の方でも、先輩スタッフが作業の流れを一つずつお伝えします。
-      </p>
-      <div class="card-list">
-        <article class="card">
-          <h3>水稲スタッフ</h3>
-          <p>
-            田植え・除草・収穫など、水田作業全般を担当します。季節ごとの作業リズムを覚えながら、
-            チームで安全に作業を進めていきます。
-          </p>
-        </article>
-        <article class="card">
-          <h3>畜産スタッフ</h3>
-          <p>
-            肉用牛の給餌・清掃・健康チェックなど、日々の飼養管理を行います。
-            生きものの変化に気づく力が身につく職種です。
-          </p>
-        </article>
-        <article class="card">
-          <h3>出荷・加工補助</h3>
-          <p>
-            玄米の袋詰めやラベル貼り、出荷前の最終確認などを担当。
-            コツコツした作業が得意な方に向いている業務です。
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <!-- 取扱商品 -->
-    <section id="products" class="fade">
-      <div class="section-label">PRODUCTS</div>
-      <h2 class="section-title">取扱商品</h2>
-      <p class="section-text">
-        土づくりからこだわったお米や、自社農場で育てた牛肉を中心に、地域の食卓に寄り添った商品を展開しています。
-        詳細は今後オンライン・店舗での販売形態に応じて拡充していく予定です。
-      </p>
-      <div class="card-list">
-        <article class="card">
-          <h3>契約農場米（精米・玄米）</h3>
-          <p>
-            自社圃場で栽培したコシヒカリ・ヒノヒカリなどの品種を中心に、用途に合わせて精米・玄米で提供します。
-          </p>
-        </article>
-        <article class="card">
-          <h3>肥育牛肉</h3>
-          <p>
-            飼料や環境に配慮しながら育てた牛肉です。部位ごとの卸販売や、セット商品としての提供にも対応可能です。
-          </p>
-        </article>
-        <article class="card">
-          <h3>加工品・ギフト</h3>
-          <p>
-            お米やお肉を使った加工品、贈答用セットなど、季節に応じた商品開発にも取り組んでいます。
-          </p>
-        </article>
-      </div>
     </section>
   </main>
 
-  <script>
-    // フェードイン（ヒーローは順番に、それ以外はスクロール時）
-    const heroTitle = document.getElementById("heroTitle");
-    const heroSub   = document.getElementById("heroSub");
-    const heroText  = document.getElementById("heroText");
-
-    window.addEventListener("load", () => {
-      heroTitle.classList.add("show");
-      setTimeout(() => heroSub.classList.add("show"), 300);
-      setTimeout(() => heroText.classList.add("show"), 600);
-    });
-
-    // セクションのスクロールフェードイン
-    const fadeTargets = document.querySelectorAll("main .fade");
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    fadeTargets.forEach(el => io.observe(el));
-  </script>
+  <footer class="site-footer">
+    <small>© 株式会社テスト</small>
+  </footer>
 </body>
 </html>
