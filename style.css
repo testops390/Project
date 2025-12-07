@@ -14,8 +14,8 @@ body {
   line-height: 1.7;
   color: #222;
 
-  /* PCでも見える“ふんわりホワイトグレー”背景 */
-  background: linear-gradient(180deg, #f2f4f8 0, #ffffff 800px);
+  /* はっきり分かる薄グレー背景（PCでも一目で違いが分かる） */
+  background-color: #f2f4f8;
 }
 
 /* コンテンツ幅統一 */
@@ -46,7 +46,7 @@ p {
   position: sticky;
   top: 0;
   z-index: 20;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid #e3e5ec;
   backdrop-filter: blur(8px);
 }
@@ -117,30 +117,32 @@ p {
 }
 
 /* ==========================
-   ヒーローセクション
+   ヒーロー（上の大きい帯）
    ========================== */
 
-.hero {
-  margin-top: 6px;
-  padding: 70px 18px 64px;
+/* ヒーロー全体は「背景グレーの上に乗った白いカード」風にする */
+.hero-wrapper {
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 0 18px;
 }
 
+.hero {
+  padding: 28px 26px 26px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
+  border: 1px solid #e1e4f0;
+}
+
+/* 既存HTMLでは <section class="hero fade"> なので
+   上の .hero-wrapper がなくても崩れないように */
 .hero > * {
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* カード風に見えるヒーロー帯 */
-.hero-inner {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 28px 26px 26px;
-  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
-  border: 1px solid #e7ebf3;
-}
-
-/* 既存対応（index.htmlがhero-innerを使わない場合） */
 .hero-kicker {
   font-size: 12px;
   letter-spacing: 0.18em;
@@ -167,19 +169,10 @@ p {
   max-width: 640px;
 }
 
-@media (min-width: 840px) {
-  .hero > .hero-kicker,
-  .hero > .hero-title,
-  .hero > .hero-subtitle,
-  .hero > .hero-text {
-    margin-left: 60px;
-  }
-}
-
 @media (max-width: 640px) {
   .hero {
-    padding-top: 58px;
-    padding-bottom: 44px;
+    padding: 20px 18px 22px;
+    border-radius: 14px;
   }
   .hero-title {
     font-size: 24px;
@@ -187,19 +180,51 @@ p {
 }
 
 /* ==========================
-   セクションごとの背景（薄い色でメリハリ）
+   セクション背景（カードっぽく）
    ========================== */
 
+/* 全体はグレー背景なので、セクションごとに白カードを載せるイメージ */
+
 .company-section,
-.section-block:nth-of-type(odd) {
+.section-block,
+.page-header {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+/* 共通の白カード */
+.company-section,
+.section-block,
+.page-header {
+  background-color: transparent; /* まず透明に */
+}
+
+/* 中身を白い箱にするための共通ラッパー */
+.section-inner {
   background-color: #ffffff;
+  border-radius: 14px;
+  padding: 22px 20px 20px;
+  box-shadow: 0 10px 26px rgba(15, 20, 40, 0.04);
+  border: 1px solid #e1e4f0;
 }
 
-.section-block:nth-of-type(even) {
-  background-color: #f7f8fc;
+/* 既存HTMLに .section-inner がないので、
+   汎用的に section 内の直下に白いカード風を適用 */
+.company-section > h2,
+.company-section > p,
+.company-section > table,
+.section-block > h2,
+.section-block > p,
+.section-block > .card-grid,
+.section-block > .card,
+.page-header > h1,
+.page-header > p {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* セクションタイトルデザイン */
+/* タイトル下のライン */
 .company-section h2,
 .section-block h2,
 .page-header h1 {
@@ -220,7 +245,7 @@ p {
 }
 
 /* ==========================
-   会社概要（テーブル）
+   会社概要テーブル
    ========================== */
 
 .company-section h2 {
@@ -241,7 +266,6 @@ p {
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #e2e4ec;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.03);
 }
 
 .company-table th,
@@ -264,7 +288,7 @@ p {
 }
 
 /* ==========================
-   カードデザイン
+   カード
    ========================== */
 
 .card {
@@ -276,12 +300,6 @@ p {
   box-shadow: 0 12px 24px rgba(15, 20, 40, 0.04);
   transition: transform 0.18s ease, box-shadow 0.18s ease,
     border-color 0.18s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
-  border-color: #d0d6ea;
 }
 
 .card h3 {
@@ -299,7 +317,13 @@ p {
   font-size: 13px;
 }
 
-/* グリッド（3 → 2 → 1） */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(15, 20, 40, 0.06);
+  border-color: #d0d6ea;
+}
+
+/* 3→2→1列 */
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -321,12 +345,6 @@ p {
 /* ==========================
    下層ページヘッダー
    ========================== */
-
-.page-header {
-  padding: 64px 18px 30px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #eceef5;
-}
 
 .page-header h1 {
   font-size: 24px;
@@ -383,7 +401,7 @@ p {
   text-align: center;
   font-size: 12px;
   color: #777;
-  background-color: #f7f8fc;
+  background-color: #f2f4f8;
   border-top: 1px solid #e1e3ec;
 }
 
