@@ -1,7 +1,6 @@
 /* ==========================
    全体基本設定
    ========================== */
-
 *,
 *::before,
 *::after {
@@ -14,7 +13,7 @@ body {
     "メイリオ", sans-serif;
   line-height: 1.7;
   color: #222;
-  background-color: #f6f7fb;
+  background-color: #ffffff; /* 完全白ベース */
 }
 
 /* コンテンツ幅の統一 */
@@ -47,23 +46,23 @@ p {
   top: 0;
   z-index: 10;
   background-color: #ffffff;
-  border-bottom: 1px solid #e2e5ea;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .header-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 8px 16px;
+  padding: 10px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .logo {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
   text-decoration: none;
-  color: #2e7d32; /* 緑系で農業感 */
+  color: #2e7d32; /* 主役カラー：農業系の緑 */
 }
 
 .global-nav a {
@@ -71,6 +70,7 @@ p {
   text-decoration: none;
   font-size: 14px;
   color: #333;
+  transition: 0.2s;
 }
 
 .global-nav a:hover {
@@ -95,13 +95,13 @@ p {
 
 
 /* ==========================
-   ヒーローセクション
+   ヒーローセクション（白背景向けに再設計）
    ========================== */
 
 .hero {
   padding: 80px 16px 70px;
-  background: linear-gradient(120deg, #e8f5e9, #e3f2fd);
-  margin-bottom: 48px;
+  background-color: #fafafa; /* 薄いグレーで柔らかく */
+  border-bottom: 1px solid #eee;
 }
 
 .hero > * {
@@ -147,13 +147,27 @@ p {
 
 
 /* ==========================
-   会社概要セクション
+   セクション背景（白×薄グレー交互で企業感UP）
    ========================== */
+
+.company-section,
+.section-block:nth-of-type(odd) {
+  background-color: #ffffff; /* 真っ白 */
+}
+
+.section-block:nth-of-type(even) {
+  background-color: #fafafa; /* 優しい薄グレー */
+}
 
 .company-section {
   padding-bottom: 40px;
   padding-top: 24px;
 }
+
+
+/* ==========================
+   会社概要（表）
+   ========================== */
 
 .company-section h2 {
   font-size: 22px;
@@ -169,23 +183,22 @@ p {
   width: 100%;
   border-collapse: collapse;
   background-color: #ffffff;
-  border-radius: 8px;
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e6e6e6;
 }
 
 .company-table th,
 .company-table td {
   padding: 12px 16px;
   font-size: 14px;
-  border-bottom: 1px solid #edf0f5;
+  border-bottom: 1px solid #efefef;
 }
 
 .company-table th {
   width: 28%;
-  background-color: #f5f7fb;
-  text-align: left;
-  white-space: nowrap;
+  background-color: #f7f7f7;
+  font-weight: 600;
 }
 
 .company-table tr:last-child th,
@@ -195,29 +208,16 @@ p {
 
 
 /* ==========================
-   共通セクションブロック
-   ========================== */
-
-.section-block {
-  padding: 32px 16px 24px;
-}
-
-.section-block h2 {
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-
-/* ==========================
-   カードレイアウト
+   カード
    ========================== */
 
 .card {
   background-color: #ffffff;
   border-radius: 10px;
   padding: 16px 18px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  margin-bottom: 20px;
+  border: 1px solid #ececec;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
 .card h3 {
@@ -235,11 +235,13 @@ p {
   font-size: 14px;
 }
 
-/* 3カラム風 */
+
+/* グリッド（3列→2列→1列） */
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 20px;
 }
 
 @media (max-width: 900px) {
@@ -256,19 +258,22 @@ p {
 
 
 /* ==========================
-   ページヘッダー（下位ページ）
+   ページヘッダー
    ========================== */
 
 .page-header {
-  padding: 56px 16px 24px;
+  padding: 56px 16px 30px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #eee;
 }
 
 .page-header h1 {
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .page-header p {
   font-size: 14px;
+  max-width: 700px;
 }
 
 
@@ -284,6 +289,7 @@ p {
   color: #ffffff;
   text-decoration: none;
   font-size: 14px;
+  transition: 0.2s;
 }
 
 .btn-link:hover {
@@ -306,11 +312,13 @@ p {
   text-align: center;
   font-size: 12px;
   color: #777;
+  background-color: #fafafa;
+  border-top: 1px solid #e6e6e6;
 }
 
 
 /* ==========================
-   スクロール時フェードイン
+   フェードイン
    ========================== */
 
 .fade {
