@@ -2,184 +2,746 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>株式会社極馳草 | 農業事業</title>
+  <title>Test Agri｜農業でまちを支える会社</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="株式会社極馳草は、お米と畜産を通じて地域の食卓を支える農業法人です。">
-  <link rel="stylesheet" href="style.css">
-  <script src="main.js" defer></script>
+
+  <style>
+    :root {
+      --green: #4caf7d;
+      --green-dark: #2f7c55;
+      --beige: #fffaf0;
+      --brown: #6b4b32;
+      --text-main: #222;
+      --text-sub: #555;
+      --gray-border: #e2e8f0;
+      --max-width: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color: var(--text-main);
+      background: #ffffff;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ヘッダー -------------------------------------------------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: #ffffffd9;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #fff 0, #fff 35%, #ffe6a7 36%, #ffd27f 60%, #fbbf77 100%);
+      box-shadow: 0 0 0 3px #fff3d4;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      font-size: 17px;
+    }
+
+    .logo-text-sub {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav a {
+      position: relative;
+      padding-bottom: 2px;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green);
+      transition: width .2s ease;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 3px 8px rgba(0,0,0,.12);
+    }
+
+    .nav-cta:hover {
+      background: var(--green-dark);
+    }
+
+    /* ヒーロー -------------------------------------------------- */
+    .hero {
+      background: linear-gradient(135deg,#f2faf4,#fffaf0);
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 36px 20px 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(260px, 2.3fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 12px;
+      letter-spacing: .18em;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(26px, 4vw, 36px);
+      line-height: 1.4;
+      margin: 0 0 8px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg,#ffe6a7,#ffd27f);
+      padding: 0 4px;
+      border-radius: 6px;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      letter-spacing: .16em;
+      color: var(--green-dark);
+      margin: 0 0 16px;
+      font-weight: 600;
+    }
+
+    .hero-text {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.9;
+      max-width: 520px;
+      margin-bottom: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background .2s ease, color .2s ease, border-color .2s ease, transform .1s ease;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,.15);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-outlined {
+      background: #fff;
+      border-color: var(--green);
+      color: var(--green-dark);
+    }
+
+    .btn-outlined:hover {
+      background: #f3faf6;
+    }
+
+    .hero-visual {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg,#e3f6ff 0,#e7f9ee 35%,#fffaf0 100%);
+      padding: 16px;
+      box-shadow: 0 14px 35px rgba(0,0,0,.12);
+    }
+
+    .hero-photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2,minmax(0,1fr));
+      gap: 8px;
+    }
+
+    .hero-photo {
+      height: 90px;
+      border-radius: 12px;
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.1);
+    }
+
+    .hero-photo.rice     { background-image: url("https://images.unsplash.com/photo-1601758124092-58a26f7a245a?auto=format&fit=crop&w=1000&q=80"); }
+    .hero-photo.cow      { background-image: url("https://images.unsplash.com/photo-1599059813529-7ab6cba9f9b1?auto=format&fit=crop&w=1000&q=80"); }
+    .hero-photo.field    { background-image: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80"); }
+    .hero-photo.family   { background-image: url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1000&q=80"); }
+
+    .hero-badge {
+      position: absolute;
+      right: 18px;
+      bottom: 14px;
+      background: #ffffffee;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 15px rgba(0,0,0,.16);
+    }
+
+    .hero-badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    /* セクション共通 -------------------------------------------- */
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    section {
+      margin-bottom: 46px;
+    }
+
+    .section-label {
+      font-size: 12px;
+      letter-spacing: .3em;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin: 0 0 10px;
+    }
+
+    .section-text {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.9;
+      margin: 0 0 12px;
+    }
+
+    /* 事業紹介 -------------------------------------------------- */
+    .business-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .biz-card {
+      border-radius: 14px;
+      padding: 16px 18px;
+      background: var(--beige);
+      border: 1px solid #f0e3c9;
+    }
+
+    .biz-tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #ffffffcc;
+      border: 1px solid #f0e3c9;
+      margin-bottom: 6px;
+      color: var(--brown);
+      font-weight: 600;
+    }
+
+    .biz-title {
+      font-size: 16px;
+      margin: 0 0 6px;
+    }
+
+    .biz-text {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* 会社概要 -------------------------------------------------- */
+    .company-wrap {
+      background: #f8fafc;
+      border-radius: 16px;
+      padding: 18px 18px 6px;
+      border: 1px solid var(--gray-border);
+    }
+
+    .company-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .company-table th,
+    .company-table td {
+      padding: 8px 8px;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+    }
+
+    .company-table th {
+      width: 110px;
+      background: #edf2f7;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* 求人 ------------------------------------------------------ */
+    .recruit-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .recruit-card {
+      border-radius: 14px;
+      padding: 16px 18px;
+      background: #fff;
+      border: 1px solid var(--gray-border);
+    }
+
+    .recruit-title {
+      font-size: 15px;
+      margin: 0 0 6px;
+    }
+
+    .recruit-meta {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-bottom: 6px;
+    }
+
+    .recruit-text {
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* 取扱商品 -------------------------------------------------- */
+    .products-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .product-card {
+      border-radius: 14px;
+      padding: 16px 18px;
+      border: 1px solid #e0e7ff;
+      background: #f5f7ff;
+    }
+
+    .product-title {
+      font-size: 15px;
+      margin: 0 0 6px;
+    }
+
+    .product-text {
+      font-size: 13px;
+      color: #4a5568;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    /* フッター -------------------------------------------------- */
+    .site-footer {
+      border-top: 1px solid var(--gray-border);
+      background: #0f172a;
+      color: #e5e7eb;
+      padding: 16px 20px;
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      color: #cbd5f5;
+    }
+
+    /* フェードイン ---------------------------------------------- */
+    .fade {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* レスポンシブ ---------------------------------------------- */
+    @media (min-width: 760px) {
+      .business-grid {
+        grid-template-columns: repeat(3,minmax(0,1fr));
+      }
+      .recruit-grid {
+        grid-template-columns: repeat(3,minmax(0,1fr));
+      }
+      .products-grid {
+        grid-template-columns: repeat(3,minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero-inner {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .nav {
+        display: none; /* とりあえずスマホではメニュー非表示（後でハンバーガー付けてもOK） */
+      }
+      .header-inner {
+        padding-inline: 14px;
+      }
+      main {
+        padding-inline: 16px;
+      }
+    }
+  </style>
 </head>
 <body>
   <!-- ヘッダー -->
   <header class="site-header">
     <div class="header-inner">
-      <a href="index.html" class="logo">株式会社極馳草 農業事業</a>
-      <nav class="global-nav">
-        <a href="index.html">ホーム</a>
-        <a href="#about">私たちについて</a>
-        <a href="#story">私たちの想い</a>
-        <a href="#business">事業紹介</a>
+      <div class="logo">
+        <div class="logo-mark"></div>
+        <div>
+          <div class="logo-text-main">Test Agri 株式会社</div>
+          <div class="logo-text-sub">お米と家畜で、まちの食卓を支える農業会社</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#business">事業内容</a>
+        <a href="#company">会社概要</a>
+        <a href="#recruit">求人情報</a>
         <a href="#products">取扱商品</a>
-        <a href="#news">ニュース</a>
-        <a href="#quality">品質と安全</a>
-        <a href="recruit/index.html">求人情報</a>
+        <a href="#contact" class="nav-cta">お問い合わせ</a>
       </nav>
     </div>
   </header>
 
   <!-- ヒーロー -->
-  <section class="hero fade">
-    <div class="hero-kicker">AGRICULTURE × DAILY LIFE</div>
-    <h1 class="hero-title">
-      いつものごはんを、<br>
-      少しだけ特別にしてくれるお米と畜産を。
-    </h1>
-    <div class="hero-subtitle">
-      米と家畜で、地域の「おいしい」を支える農業会社
-    </div>
-    <p class="hero-text">
-      株式会社極馳草は、田んぼで育てるお米づくりと、牛や豚などの畜産を通して、
-      毎日の食卓に「安心して食べられるもの」を届ける会社です。<br>
-      派手なことはしていませんが、天気や季節と向き合いながら、土と生きもののお世話をこつこつ続けています。
-    </p>
-  </section>
-
-  <!-- 私たちについて／会社概要 -->
-  <section id="about" class="company-section fade">
-    <h2>私たちについて</h2>
-    <p>
-      私たちは、家族経営の小さな農場からスタートしました。<br>
-      「自分たちの家族にも食べさせたいと思えるお米とお肉づくり」を大切にしながら、
-      少しずつ田んぼや牛舎の規模を広げてきました。<br>
-      無理をしすぎず、長く続けられるやり方で、地域の食卓を支える存在でありたいと考えています。
-    </p>
-
-    <table class="company-table">
-      <tbody>
-        <!-- 登録情報を含めた会社概要 -->
-        <tr>
-          <th>商号</th>
-          <td>株式会社極馳草</td>
-        </tr>
-        <tr>
-          <th>法人種別</th>
-          <td>株式会社</td>
-        </tr>
-        <tr>
-          <th>本店所在地</th>
-          <td>〒870-0864　大分県大分市大字国分１５２９番地</td>
-        </tr>
-        <tr>
-          <th>法人番号指定日</th>
-          <td>2025年11月20日</td>
-        </tr>
-        <tr>
-          <th>最終登記更新日</th>
-          <td>2025年11月20日</td>
-        </tr>
-        <tr>
-          <th>会社法人等番号</th>
-          <td>320001021446</td>
-        </tr>
-        <!-- ここから下は、必要に応じて任意の情報を入れてください -->
-        <tr>
-          <th>事業内容</th>
-          <td>水稲栽培、畜産業、農産物の加工・販売　など</td>
-        </tr>
-        <tr>
-          <th>設立</th>
-          <td>20XX年X月X日（任意で入力）</td>
-        </tr>
-        <tr>
-          <th>代表者</th>
-          <td>代表取締役　〇〇 〇〇（任意で入力）</td>
-        </tr>
-        <tr>
-          <th>資本金</th>
-          <td>〇〇〇万円（任意で入力）</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
-
-  <!-- 私たちの想い -->
-  <section id="story" class="section-block fade">
-    <h2>私たちの想い</h2>
-    <p>
-      お米もお肉も、「誰が、どんな気持ちで作ったか」が味に出ると考えています。<br>
-      毎日のごはんが少しだけ楽しみになるように、派手さよりも、ていねいさと誠実さを大切にしています。
-    </p>
-  </section>
-
-  <!-- 事業紹介 -->
-  <section id="business" class="section-block fade">
-    <h2>事業紹介</h2>
-    <div class="card-grid">
-      <article class="card">
-        <h3>お米づくり</h3>
-        <p>
-          地元の気候に合った品種を中心に、土づくりからこだわったお米を育てています。
-          飲食店向けの業務用米やご家庭向けのお米を販売しています。
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-kicker">AGRICULTURE × COMMUNITY</div>
+        <h1 class="hero-title fade" id="heroTitle">
+          <span>良質なお米と家畜</span> を育て、<br>
+          地域の食卓に「安心」を届ける。
+        </h1>
+        <p class="hero-sub fade" id="heroSub">CREATING FRIENDLY FARMING QUALITY</p>
+        <p class="hero-text fade" id="heroText">
+          Test Agri は、水田で育てるお米づくりと、牛や豚などの畜産を組み合わせた
+          小さな農業会社です。<br>
+          「顔の見える生産者」として、近くのスーパーや飲食店、ご家庭の食卓まで、
+          毎日気持ちよく食べてもらえる農産物を届けることを目指しています。
         </p>
-      </article>
-      <article class="card">
-        <h3>畜産</h3>
-        <p>
-          牛や豚などの飼育を行い、飼料や環境にもできるだけ負担がかからないよう工夫しています。
-          ストレスの少ない環境づくりを心がけ、じっくり時間をかけて育てています。
-        </p>
-      </article>
-      <article class="card">
-        <h3>地域向けサービス</h3>
-        <p>
-          直売やイベント出店を通じて、地域の方に直接商品を届ける取り組みも行っています。
-          季節の限定品や加工品も少しずつ増やしていく予定です。
-        </p>
-      </article>
+        <div class="hero-buttons fade" id="heroBtns">
+          <a href="#business" class="btn btn-primary">事業内容を見る</a>
+          <a href="#recruit" class="btn btn-outlined">一緒に働く仲間を探しています</a>
+        </div>
+      </div>
+
+      <div class="hero-visual fade" id="heroVisual">
+        <div class="hero-photo-grid">
+          <div class="hero-photo rice"></div>
+          <div class="hero-photo cow"></div>
+          <div class="hero-photo field"></div>
+          <div class="hero-photo family"></div>
+        </div>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span>地域密着・少人数で運営しています</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- 取扱商品 -->
-  <section id="products" class="section-block fade">
-    <h2>取扱商品について</h2>
-    <p>
-      精米やもち米、自社で育てた畜産品など、季節に合わせた商品を取り揃えています。<br>
-      詳しいラインナップは、以下のページでご紹介しています。
-    </p>
-    <p>
-      <a href="products/index.html" class="btn-link">取扱商品ページへ</a>
-    </p>
-  </section>
+  <!-- メインコンテンツ -->
+  <main>
+    <!-- 事業内容 -->
+    <section id="business" class="fade">
+      <div class="section-label">BUSINESS</div>
+      <h2 class="section-title">事業内容</h2>
+      <p class="section-text">
+        Test Agri では、お米・畜産・加工品販売の3つの柱を中心に事業を展開しています。
+        派手なことはしていませんが、一つひとつの作業を丁寧に積み重ねて、
+        長く続けられる農業を目指しています。
+      </p>
 
-  <!-- ニュース -->
-  <section id="news" class="section-block fade">
-    <h2>ニュース・お知らせ</h2>
-    <p>収穫や出荷のお知らせ、イベント出店情報などをこちらでお伝えしていきます。</p>
-  </section>
+      <div class="business-grid">
+        <article class="biz-card">
+          <div class="biz-tag">RICE</div>
+          <h3 class="biz-title">お米づくり</h3>
+          <p class="biz-text">
+            田植えから収穫まで、年間を通して水田の管理を行っています。
+            土づくりや水管理にこだわりつつ、天候に合わせて柔軟に作業を調整しています。
+          </p>
+        </article>
+        <article class="biz-card">
+          <div class="biz-tag">LIVESTOCK</div>
+          <h3 class="biz-title">畜産・飼養管理</h3>
+          <p class="biz-text">
+            牛や豚の給餌・清掃・健康チェックなど、毎日の世話を行います。
+            生きものの小さな変化に気づくことを大切にしながら、無理のない頭数で運営しています。
+          </p>
+        </article>
+        <article class="biz-card">
+          <div class="biz-tag">SALES</div>
+          <h3 class="biz-title">販売・加工品</h3>
+          <p class="biz-text">
+            収穫したお米やお肉を、自社で袋詰め・ラベル貼り・簡単な加工を行い、
+            近隣のスーパーや飲食店、個人のお客さまへお届けしています。
+          </p>
+        </article>
+      </div>
+    </section>
 
-  <!-- 品質と安全 -->
-  <section id="quality" class="section-block fade">
-    <h2>品質管理・安全への取り組み</h2>
-    <p>
-      農薬や飼料の管理記録、温度管理、衛生管理など、毎日のチェックを欠かさず行っています。<br>
-      小さな農場だからこそ、顔の見える範囲で責任を持って育てることを大切にしています。
-    </p>
-  </section>
+    <!-- 会社概要 -->
+    <section id="company" class="fade">
+      <div class="section-label">COMPANY</div>
+      <h2 class="section-title">会社概要</h2>
+      <p class="section-text">
+        小さな規模だからこそ、一緒に働く人やお付き合いのある方との距離感を大切にしています。
+        「相談しやすい農家」であり続けることが、私たちの目標です。
+      </p>
 
-  <!-- 求人情報への導線 -->
-  <section class="section-block fade">
-    <h2>一緒に働く仲間を募集しています</h2>
-    <p>
-      農業や畜産の仕事に興味がある方、まずは見学や体験からでも歓迎しています。<br>
-      募集職種や勤務条件などの詳細は、求人情報ページをご覧ください。
-    </p>
-    <p>
-      <a href="recruit/index.html" class="btn-link">求人情報ページへ</a>
-    </p>
-  </section>
+      <div class="company-wrap">
+        <table class="company-table">
+          <tr>
+            <th>会社名</th>
+            <td>Test Agri 株式会社</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>〇〇県〇〇市〇〇町1-2-3</td>
+          </tr>
+          <tr>
+            <th>事業内容</th>
+            <td>水稲栽培、畜産（肉用牛・豚）、農産物および加工品の販売 など</td>
+          </tr>
+          <tr>
+            <th>設立</th>
+            <td>20XX年X月</td>
+          </tr>
+          <tr>
+            <th>代表者</th>
+            <td>代表取締役　テスト 太郎</td>
+          </tr>
+          <tr>
+            <th>従業員数</th>
+            <td>常勤X名、パート・アルバイトX名</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 求人情報 -->
+    <section id="recruit" class="fade">
+      <div class="section-label">RECRUIT</div>
+      <h2 class="section-title">求人情報</h2>
+      <p class="section-text">
+        未経験からでも大丈夫です。<br>
+        「からだを動かす仕事が好き」「生きものの世話に興味がある」「将来は自分で農業をやってみたい」など、
+        どんな動機でも歓迎しています。
+      </p>
+
+      <div class="recruit-grid">
+        <article class="recruit-card">
+          <h3 class="recruit-title">水田作業スタッフ（通年）</h3>
+          <div class="recruit-meta">雇用形態：正社員／アルバイト</div>
+          <p class="recruit-text">
+            田植え・草刈り・収穫・出荷準備など、水田作業全般を担当します。
+            天候に合わせて作業が変わるので、外で動くことが好きな方に向いています。
+          </p>
+        </article>
+        <article class="recruit-card">
+          <h3 class="recruit-title">畜産スタッフ（未経験OK）</h3>
+          <div class="recruit-meta">雇用形態：正社員／パート</div>
+          <p class="recruit-text">
+            給餌・清掃・健康チェックなど、牛や豚の日々の世話を行います。
+            朝が早い分、夕方は早めに終わる日も多く、生活リズムをつくりやすい仕事です。
+          </p>
+        </article>
+        <article class="recruit-card">
+          <h3 class="recruit-title">出荷・加工補助スタッフ</h3>
+          <div class="recruit-meta">雇用形態：パート</div>
+          <p class="recruit-text">
+            お米の袋詰め、ラベル貼り、ギフトセットの箱詰めなどを担当します。
+            室内作業が中心なので、細かい作業が得意な方におすすめです。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 取扱商品 -->
+    <section id="products" class="fade">
+      <div class="section-label">PRODUCTS</div>
+      <h2 class="section-title">取扱商品</h2>
+      <p class="section-text">
+        ここで紹介している内容はサンプルです。実際に扱うお米やお肉、加工品が決まったら、
+        商品名や特徴をそのまま差し替えて使えます。
+      </p>
+
+      <div class="products-grid">
+        <article class="product-card">
+          <h3 class="product-title">Test Agri コシヒカリ</h3>
+          <p class="product-text">
+            自社水田で育てたコシヒカリです。普段のごはん用として使いやすい、
+            ほどよい粘りと甘みが特徴です。（5kg／10kg）
+          </p>
+        </article>
+        <article class="product-card">
+          <h3 class="product-title">Test Agri ブレンド米</h3>
+          <p class="product-text">
+            料理やお弁当に使いやすいようブレンドしたお米です。
+            家庭用だけでなく、飲食店さま向けのご提案も可能です。
+          </p>
+        </article>
+        <article class="product-card">
+          <h3 class="product-title">自社肥育牛 切り落とし</h3>
+          <p class="product-text">
+            自社農場で育てた牛肉を、家庭で使いやすい切り落としパックにしました。
+            煮込み料理や炒めものに向いています。
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- お問い合わせ（ダミー） -->
+    <section id="contact" class="fade">
+      <div class="section-label">CONTACT</div>
+      <h2 class="section-title">お問い合わせ</h2>
+      <p class="section-text">
+        見学のご相談、取引のお問い合わせ、求人への応募などは、下記の連絡先からお気軽にご連絡ください。<br>
+        ※フォームは準備中の想定なので、実際に運用するときはメールフォームサービスなどを組み合わせる形にできます。
+      </p>
+      <p class="section-text">
+        電話：000-000-0000（担当：テスト）<br>
+        メール：info@example.com
+      </p>
+    </section>
+  </main>
 
   <!-- フッター -->
   <footer class="site-footer">
-    <small>&copy; 2025 株式会社極馳草</small>
+    <div class="footer-inner">
+      <div>© <span id="year"></span> Test Agri 株式会社</div>
+      <div class="footer-links">
+        <a href="#company">会社概要</a>
+        <a href="#recruit">採用情報</a>
+        <a href="#contact">お問い合わせ</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    // 年号
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // ヒーローのフェードイン
+    window.addEventListener("load", () => {
+      document.getElementById("heroTitle").classList.add("show");
+      setTimeout(() => document.getElementById("heroSub").classList.add("show"), 200);
+      setTimeout(() => document.getElementById("heroText").classList.add("show"), 400);
+      setTimeout(() => document.getElementById("heroBtns").classList.add("show"), 600);
+      setTimeout(() => document.getElementById("heroVisual").classList.add("show"), 700);
+    });
+
+    // セクションのスクロール時フェードイン
+    const targets = document.querySelectorAll("main .fade");
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    targets.forEach(el => io.observe(el));
+  </script>
 </body>
 </html>
