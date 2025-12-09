@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Test Agri｜農業でまちを支える会社</title>
+  <title>株式会社極馳草｜お米と畜産で地域を支える農業法人</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <style>
@@ -209,54 +209,50 @@
       background: #f3faf6;
     }
 
+    /* 画像なし版 会社情報ボックス ------------------------------- */
     .hero-visual {
       position: relative;
       border-radius: 18px;
       overflow: hidden;
-      background:
-        linear-gradient(135deg,#e3f6ff 0,#e7f9ee 35%,#fffaf0 100%);
-      padding: 16px;
+      background: linear-gradient(135deg,#e3f6ff 0,#e7f9ee 35%,#fffaf0 100%);
+      padding: 16px 16px 18px;
       box-shadow: 0 14px 35px rgba(0,0,0,.12);
     }
 
-    .hero-photo-grid {
-      display: grid;
-      grid-template-columns: repeat(2,minmax(0,1fr));
-      gap: 8px;
+    .hero-info-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 6px;
     }
 
-    .hero-photo {
-      height: 90px;
+    .hero-info-list {
+      margin: 0;
+      padding: 10px 12px;
       border-radius: 12px;
-      background-size: cover;
-      background-position: center;
-      filter: saturate(1.1);
+      background: #ffffffdd;
+      font-size: 12px;
+      line-height: 1.8;
+      border: 1px solid #e2e8f0;
     }
 
-    .hero-photo.rice     { background-image: url("https://images.unsplash.com/photo-1601758124092-58a26f7a245a?auto=format&fit=crop&w=1000&q=80"); }
-    .hero-photo.cow      { background-image: url("https://images.unsplash.com/photo-1599059813529-7ab6cba9f9b1?auto=format&fit=crop&w=1000&q=80"); }
-    .hero-photo.field    { background-image: url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1000&q=80"); }
-    .hero-photo.family   { background-image: url("https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1000&q=80"); }
+    .hero-info-list dt {
+      font-weight: 600;
+      float: left;
+      clear: left;
+      width: 90px;
+      color: #4b5563;
+    }
 
-    .hero-badge {
-      position: absolute;
-      right: 18px;
-      bottom: 14px;
-      background: #ffffffee;
-      border-radius: 999px;
-      padding: 6px 12px;
+    .hero-info-list dd {
+      margin: 0 0 4px 95px;
+      color: #111827;
+    }
+
+    .hero-info-note {
+      margin-top: 8px;
       font-size: 11px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 6px 15px rgba(0,0,0,.16);
-    }
-
-    .hero-badge-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
+      color: #4b5563;
     }
 
     /* セクション共通 -------------------------------------------- */
@@ -349,7 +345,7 @@
     }
 
     .company-table th {
-      width: 110px;
+      width: 130px;
       background: #edf2f7;
       font-weight: 600;
       white-space: nowrap;
@@ -470,7 +466,7 @@
         grid-template-columns: minmax(0,1fr);
       }
       .nav {
-        display: none; /* とりあえずスマホではメニュー非表示（後でハンバーガー付けてもOK） */
+        display: none; /* スマホではメニュー非表示（必要なら後でハンバーガー対応） */
       }
       .header-inner {
         padding-inline: 14px;
@@ -488,8 +484,8 @@
       <div class="logo">
         <div class="logo-mark"></div>
         <div>
-          <div class="logo-text-main">Test Agri 株式会社</div>
-          <div class="logo-text-sub">お米と家畜で、まちの食卓を支える農業会社</div>
+          <div class="logo-text-main">株式会社極馳草</div>
+          <div class="logo-text-sub">お米と畜産で、地域の食卓を支える農業法人</div>
         </div>
       </div>
       <nav class="nav">
@@ -509,31 +505,39 @@
         <div class="hero-kicker">AGRICULTURE × COMMUNITY</div>
         <h1 class="hero-title fade" id="heroTitle">
           <span>良質なお米と家畜</span> を育て、<br>
-          地域の食卓に「安心」を届ける。
+          大分のまちの食卓に「安心」を届ける。
         </h1>
         <p class="hero-sub fade" id="heroSub">CREATING FRIENDLY FARMING QUALITY</p>
         <p class="hero-text fade" id="heroText">
-          Test Agri は、水田で育てるお米づくりと、牛や豚などの畜産を組み合わせた
-          小さな農業会社です。<br>
-          「顔の見える生産者」として、近くのスーパーや飲食店、ご家庭の食卓まで、
-          毎日気持ちよく食べてもらえる農産物を届けることを目指しています。
+          株式会社極馳草は、大分県大分市を拠点とする農業法人です。<br>
+          田んぼで育てるお米づくりと、牛や豚などの畜産を組み合わせながら、
+          毎日のごはんに並ぶ「いつもの一皿」をていねいに支えています。
         </p>
         <div class="hero-buttons fade" id="heroBtns">
           <a href="#business" class="btn btn-primary">事業内容を見る</a>
-          <a href="#recruit" class="btn btn-outlined">一緒に働く仲間を探しています</a>
+          <a href="#recruit" class="btn btn-outlined">一緒に働く仲間を募集しています</a>
         </div>
       </div>
 
+      <!-- 画像なしの会社情報ボックス -->
       <div class="hero-visual fade" id="heroVisual">
-        <div class="hero-photo-grid">
-          <div class="hero-photo rice"></div>
-          <div class="hero-photo cow"></div>
-          <div class="hero-photo field"></div>
-          <div class="hero-photo family"></div>
-        </div>
-        <div class="hero-badge">
-          <span class="hero-badge-dot"></span>
-          <span>地域密着・少人数で運営しています</span>
+        <div class="hero-info-title">株式会社極馳草　会社情報（概要）</div>
+        <dl class="hero-info-list">
+          <dt>商号</dt>
+          <dd>株式会社極馳草</dd>
+          <dt>所在地</dt>
+          <dd>〒870-0864 大分県大分市大字国分1529番地</dd>
+          <dt>法人種別</dt>
+          <dd>株式会社</dd>
+          <dt>会社法人等番号</dt>
+          <dd>320001021446</dd>
+          <dt>法人番号指定日</dt>
+          <dd>2025年11月20日</dd>
+          <dt>最終登記更新日</dt>
+          <dd>2025年11月20日</dd>
+        </dl>
+        <div class="hero-info-note">
+          ※ 上記の登録情報は、登記・法人番号公表サイトの内容にもとづいて掲載しています。
         </div>
       </div>
     </div>
@@ -546,9 +550,8 @@
       <div class="section-label">BUSINESS</div>
       <h2 class="section-title">事業内容</h2>
       <p class="section-text">
-        Test Agri では、お米・畜産・加工品販売の3つの柱を中心に事業を展開しています。
-        派手なことはしていませんが、一つひとつの作業を丁寧に積み重ねて、
-        長く続けられる農業を目指しています。
+        株式会社極馳草では、お米・畜産・出荷販売を中心に事業を展開しています。
+        派手な取り組みよりも、一つひとつの作業を丁寧に続けていくことを大切にしています。
       </p>
 
       <div class="business-grid">
@@ -570,10 +573,10 @@
         </article>
         <article class="biz-card">
           <div class="biz-tag">SALES</div>
-          <h3 class="biz-title">販売・加工品</h3>
+          <h3 class="biz-title">出荷・販売</h3>
           <p class="biz-text">
-            収穫したお米やお肉を、自社で袋詰め・ラベル貼り・簡単な加工を行い、
-            近隣のスーパーや飲食店、個人のお客さまへお届けしています。
+            収穫したお米や畜産物を、袋詰め・ラベル貼りなどの出荷準備を行ったうえで、
+            取引先や地域のお客さまへ届けています。
           </p>
         </article>
       </div>
@@ -584,35 +587,47 @@
       <div class="section-label">COMPANY</div>
       <h2 class="section-title">会社概要</h2>
       <p class="section-text">
-        小さな規模だからこそ、一緒に働く人やお付き合いのある方との距離感を大切にしています。
-        「相談しやすい農家」であり続けることが、私たちの目標です。
+        大分の土地と気候に合わせた農業を通じて、地域の食卓を支えることを目指しています。
+        小さな規模だからこそ、関わる人との距離感を大切にした運営を心がけています。
       </p>
 
       <div class="company-wrap">
         <table class="company-table">
           <tr>
-            <th>会社名</th>
-            <td>Test Agri 株式会社</td>
+            <th>商号</th>
+            <td>株式会社極馳草</td>
           </tr>
           <tr>
             <th>所在地</th>
-            <td>〇〇県〇〇市〇〇町1-2-3</td>
+            <td>〒870-0864 大分県大分市大字国分1529番地</td>
+          </tr>
+          <tr>
+            <th>法人種別</th>
+            <td>株式会社</td>
+          </tr>
+          <tr>
+            <th>会社法人等番号</th>
+            <td>320001021446</td>
+          </tr>
+          <tr>
+            <th>法人番号指定日</th>
+            <td>2025年11月20日</td>
+          </tr>
+          <tr>
+            <th>最終登記更新日</th>
+            <td>2025年11月20日</td>
           </tr>
           <tr>
             <th>事業内容</th>
-            <td>水稲栽培、畜産（肉用牛・豚）、農産物および加工品の販売 など</td>
+            <td>水稲栽培、畜産、農産物および関連商品の出荷・販売 など</td>
           </tr>
           <tr>
             <th>設立</th>
-            <td>20XX年X月</td>
+            <td>（準備中）</td>
           </tr>
           <tr>
             <th>代表者</th>
-            <td>代表取締役　テスト 太郎</td>
-          </tr>
-          <tr>
-            <th>従業員数</th>
-            <td>常勤X名、パート・アルバイトX名</td>
+            <td>（準備中）</td>
           </tr>
         </table>
       </div>
@@ -623,9 +638,9 @@
       <div class="section-label">RECRUIT</div>
       <h2 class="section-title">求人情報</h2>
       <p class="section-text">
-        未経験からでも大丈夫です。<br>
-        「からだを動かす仕事が好き」「生きものの世話に興味がある」「将来は自分で農業をやってみたい」など、
-        どんな動機でも歓迎しています。
+        未経験からでも、農業や畜産の仕事に挑戦してみたい方を歓迎します。<br>
+        「体を動かす仕事が好き」「生きものの世話をしてみたい」「将来自分で農業をやってみたい」など、
+        きっかけはどんなものでも構いません。
       </p>
 
       <div class="recruit-grid">
@@ -634,23 +649,23 @@
           <div class="recruit-meta">雇用形態：正社員／アルバイト</div>
           <p class="recruit-text">
             田植え・草刈り・収穫・出荷準備など、水田作業全般を担当します。
-            天候に合わせて作業が変わるので、外で動くことが好きな方に向いています。
+            外で身体を動かすことが好きな方に向いている業務です。
           </p>
         </article>
         <article class="recruit-card">
-          <h3 class="recruit-title">畜産スタッフ（未経験OK）</h3>
+          <h3 class="recruit-title">畜産スタッフ</h3>
           <div class="recruit-meta">雇用形態：正社員／パート</div>
           <p class="recruit-text">
             給餌・清掃・健康チェックなど、牛や豚の日々の世話を行います。
-            朝が早い分、夕方は早めに終わる日も多く、生活リズムをつくりやすい仕事です。
+            早朝勤務が中心になるため、生活リズムを整えたい方にも向いています。
           </p>
         </article>
         <article class="recruit-card">
-          <h3 class="recruit-title">出荷・加工補助スタッフ</h3>
+          <h3 class="recruit-title">出荷補助・軽作業スタッフ</h3>
           <div class="recruit-meta">雇用形態：パート</div>
           <p class="recruit-text">
-            お米の袋詰め、ラベル貼り、ギフトセットの箱詰めなどを担当します。
-            室内作業が中心なので、細かい作業が得意な方におすすめです。
+            袋詰め、ラベル貼り、簡単な梱包作業などの軽作業を担当します。
+            室内作業が多く、コツコツした作業が得意な方におすすめです。
           </p>
         </article>
       </div>
@@ -661,30 +676,28 @@
       <div class="section-label">PRODUCTS</div>
       <h2 class="section-title">取扱商品</h2>
       <p class="section-text">
-        ここで紹介している内容はサンプルです。実際に扱うお米やお肉、加工品が決まったら、
-        商品名や特徴をそのまま差し替えて使えます。
+        ここで紹介している内容はサンプルです。実際に取り扱う商品が固まり次第、
+        商品名や説明文を差し替えてそのままお使いいただけます。
       </p>
 
       <div class="products-grid">
         <article class="product-card">
-          <h3 class="product-title">Test Agri コシヒカリ</h3>
+          <h3 class="product-title">極馳草ブレンド米</h3>
           <p class="product-text">
-            自社水田で育てたコシヒカリです。普段のごはん用として使いやすい、
-            ほどよい粘りと甘みが特徴です。（5kg／10kg）
+            毎日の食卓向けにブレンドしたお米です。ほどよい粘りと甘みで、和食全般に合わせやすい味わいです。
           </p>
         </article>
         <article class="product-card">
-          <h3 class="product-title">Test Agri ブレンド米</h3>
+          <h3 class="product-title">業務用精米（大袋）</h3>
           <p class="product-text">
-            料理やお弁当に使いやすいようブレンドしたお米です。
-            家庭用だけでなく、飲食店さま向けのご提案も可能です。
+            飲食店や給食向けの業務用精米です。kg数や納品方法はご相談に応じて調整可能です。
           </p>
         </article>
         <article class="product-card">
-          <h3 class="product-title">自社肥育牛 切り落とし</h3>
+          <h3 class="product-title">畜産品・加工品</h3>
           <p class="product-text">
-            自社農場で育てた牛肉を、家庭で使いやすい切り落としパックにしました。
-            煮込み料理や炒めものに向いています。
+            肉用牛・豚を中心に、段階的に販売や加工品のラインナップを整えていく予定です。
+            詳細が決まり次第、こちらで順次お知らせいたします。
           </p>
         </article>
       </div>
@@ -695,11 +708,11 @@
       <div class="section-label">CONTACT</div>
       <h2 class="section-title">お問い合わせ</h2>
       <p class="section-text">
-        見学のご相談、取引のお問い合わせ、求人への応募などは、下記の連絡先からお気軽にご連絡ください。<br>
-        ※フォームは準備中の想定なので、実際に運用するときはメールフォームサービスなどを組み合わせる形にできます。
+        見学のご相談、取引に関するお問い合わせ、求人への応募などは、下記の連絡先からご連絡ください。<br>
+        ※フォーム部分はダミー想定のため、実際の運用時にはメールフォームサービス等と組み合わせる形に変更可能です。
       </p>
       <p class="section-text">
-        電話：000-000-0000（担当：テスト）<br>
+        電話：000-000-0000（担当：極馳草）<br>
         メール：info@example.com
       </p>
     </section>
@@ -708,7 +721,7 @@
   <!-- フッター -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <div>© <span id="year"></span> Test Agri 株式会社</div>
+      <div>© <span id="year"></span> 株式会社極馳草</div>
       <div class="footer-links">
         <a href="#company">会社概要</a>
         <a href="#recruit">採用情報</a>
